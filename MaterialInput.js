@@ -1,6 +1,6 @@
 /*!
  * MaterialInput 0.1.0
- * (c) 2020 Théo BENOIT mailto:theo.benoit16@gmail.com
+ * (c) 2020 Théo BENOIT
  * MIT License
  * https://github.com/Androlax2/material-input
  */
