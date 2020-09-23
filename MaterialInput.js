@@ -29,7 +29,6 @@ class NotValidTypeError extends Error {
 
 /**
  * TODO : - PREFIX CSS
- * TODO : - MAKE THE READ ME
  * TODO : - Fix textarea jumping on click/focus
  */
 class MaterialInput extends HTMLElement {
@@ -347,17 +346,40 @@ class MaterialInput extends HTMLElement {
                 	--materialInput__borderColor: #9e9e9e;
                 	--materialInput__borderColorActive: #4285f4;
                 	
+                	/* OTHER BORDERS */
+                	--materialInput__borderTopWidth: 0;
+                	--materialInput__borderRightWidth: 0;
+                	--materialInput__borderLeftWidth: 0;
+                	
                 	/* BORDER TRANSITION */
                 	--materialInput__borderRemoveTransitionDelay: .3s;
                 	--materialInput__borderRemoveTransition: cubic-bezier(0.4, 0, 0.2, 1);
                 	--materialInput__borderAddTransitionDelay: .3s;
                 	--materialInput__borderAddTransition: cubic-bezier(0.4, 0, 0.2, 1);
                 	
+                	/* PADDING TOP */
+                	--materialInput__paddingTop: 0.6em; /* If you want to remove this, you need to set 0em */
+                	
                 	/* INPUT PADDINGS */
-                	--materialInput__inputPaddingTop: 0.6em;
+                	--materialInput__inputPaddingTop: 0;
                 	--materialInput__inputPaddingRight: 0;
                 	--materialInput__inputPaddingBottom: 0.4em;
                 	--materialInput__inputPaddingLeft: 0;
+                	
+                	/* LABEL MARGIN WHEN NOT ACTIVE */
+                	--materialInput__labelMarginLeft: var(--materialInput__inputPaddingLeft);
+                	--materialInput__labelMarginRight: var(--materialInput__inputPaddingRight);
+                	
+                	/* LABEL MARGIN WHEN ACTIVE */
+                	--materialInput__activeLabelMarginLeft: var(--materialInput__labelMarginLeft);
+                	--materialInput__activeLabelMarginRight: var(--materialInput__labelMarginRight);
+                	
+               		/* BAR DISPLAY */
+               		--materialInput__barDisplay: block;
+                }
+                
+                .materialInput {
+                	padding-top: calc(0.9em + var(--materialInput__paddingTop)); /* 0.9em is the minimum for padding top (to have the label upper user input) */
                 }
                 
                 .materialInput__input {
@@ -372,14 +394,17 @@ class MaterialInput extends HTMLElement {
 				    line-height: 1;
 				    letter-spacing: var(--materialInput__fontLetterSpacing);
 				    color: var(--materialInput__fontColor);
-				    padding: calc(0.85em + var(--materialInput__inputPaddingTop)) var(--materialInput__inputPaddingRight) var(--materialInput__inputPaddingBottom) var(--materialInput__inputPaddingLeft); /* 0.85em is the minimum for padding top (to have the label upper user input) */
+				    padding: var(--materialInput__inputPaddingTop) var(--materialInput__inputPaddingRight) var(--materialInput__inputPaddingBottom) var(--materialInput__inputPaddingLeft); 
 				    display: block;
 				    width: 100%;
 				    border-top: none;
 				    border-right: none;
 				    border-left: none;
 				    border-image: initial;
+				    border-top: var(--materialInput__borderTopWidth) solid var(--materialInput__borderColor);
+				    border-right: var(--materialInput__borderRightWidth) solid var(--materialInput__borderColor);
 				    border-bottom: var(--materialInput__borderWidth) solid var(--materialInput__borderColor);
+				    border-left: var(--materialInput__borderLeftWidth) solid var(--materialInput__borderColor);
 				    box-shadow: none;
                 }
                 
@@ -403,19 +428,18 @@ class MaterialInput extends HTMLElement {
 					font-size: 1em;
 					letter-spacing: var(--materialInput__fontLetterSpacing);
 					top: 0;
-					margin-left: var(--materialInput__inputPaddingLeft);
-					margin-right: var(--materialInput__inputPaddingRight);
-					/* PADDING OF INPUT */
-					padding-top: calc(0.85em + var(--materialInput__inputPaddingTop));
+					margin-left: var(--materialInput__labelMarginLeft);
+					margin-right: var(--materialInput__labelMarginRight);
+					padding-top: calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop));
 					padding-bottom: var(--materialInput__inputPaddingBottom);
-					/* PADDING OF INPUT */
 					text-align: initial;
 					transform-origin: 0 100%;
 					will-change: padding-top;
-					transition: padding-top .2s ease-out, transform .2s ease-out, color .2s ease-out;
+					transition: padding-top .2s ease-out, transform .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out;
                 }
                 
                 .materialInput__bar {
+                	display: var(--materialInput__barDisplay);
 				    transform: scaleX(0);
 				    background-color: var(--materialInput__borderColorActive);
 				    height: calc(var(--materialInput__borderWidth) + 1px);
@@ -443,6 +467,8 @@ class MaterialInput extends HTMLElement {
                 	padding-top: 0;
                 	transform: scale(0.8);
 				    transform-origin: 0 0;
+				    margin-left: var(--materialInput__activeLabelMarginLeft);
+				    margin-right: var(--materialInput__activeLabelMarginRight);
                 }
                 
                 :host([value]) label,
@@ -450,6 +476,8 @@ class MaterialInput extends HTMLElement {
                 	padding-top: 0;
                 	transform: scale(0.8);
 				    transform-origin: 0 0;
+				    margin-left: var(--materialInput__activeLabelMarginLeft);
+				    margin-right: var(--materialInput__activeLabelMarginRight);
                 }
                 
                 @keyframes materialInputBarRemoveUnderline {
@@ -494,9 +522,11 @@ class MaterialInput extends HTMLElement {
 		const $bar = '<div class="materialInput__bar"></div>';
 
 		return `
-			${$label}
-			${$input}
-			${$bar}
+			<div class="materialInput">
+				${$label}
+				${$input}
+				${$bar}
+			</div>
 		`;
 	}
 
@@ -512,7 +542,11 @@ class MaterialInput extends HTMLElement {
 			this.isFocused = true;
 		});
 		this.addEventListener('focusout', () => this.isFocused = false);
+		window.addEventListener('click', () => {
+			this.isFocused = false;
+		});
 		this.addEventListener('click', e => {
+			e.stopPropagation();
 			const {left} = e.target.getBoundingClientRect();
 			this.$bar.style.transformOrigin = `${e.clientX - left}px center`;
 			this.isInitialized = true;

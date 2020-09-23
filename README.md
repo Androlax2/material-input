@@ -123,17 +123,36 @@ material-input {
     --materialInput__borderColor: #9e9e9e;
     --materialInput__borderColorActive: #4285f4;
     
+    /* OTHER BORDERS */
+    --materialInput__borderTopWidth: 0;
+    --materialInput__borderRightWidth: 0;
+    --materialInput__borderLeftWidth: 0;
+    
     /* BORDER TRANSITION */
     --materialInput__borderRemoveTransitionDelay: .3s;
     --materialInput__borderRemoveTransition: cubic-bezier(0.4, 0, 0.2, 1);
     --materialInput__borderAddTransitionDelay: .3s;
     --materialInput__borderAddTransition: cubic-bezier(0.4, 0, 0.2, 1);
     
+    /* PADDING TOP */
+    --materialInput__paddingTop: 0.6em; /* If you want to remove this, you need to set 0em */
+    
     /* INPUT PADDINGS */
-    --materialInput__inputPaddingTop: 0.6em;
+    --materialInput__inputPaddingTop: 0;
     --materialInput__inputPaddingRight: 0;
     --materialInput__inputPaddingBottom: 0.4em;
     --materialInput__inputPaddingLeft: 0;
+    
+    /* LABEL MARGIN WHEN NOT ACTIVE */
+    --materialInput__labelMarginLeft: var(--materialInput__inputPaddingLeft);
+    --materialInput__labelMarginRight: var(--materialInput__inputPaddingRight);
+    
+    /* LABEL MARGIN WHEN ACTIVE */
+    --materialInput__activeLabelMarginLeft: var(--materialInput__labelMarginLeft);
+    --materialInput__activeLabelMarginRight: var(--materialInput__labelMarginRight);
+    
+    /* BAR DISPLAY */
+    --materialInput__barDisplay: block;
 }
 ```
 
