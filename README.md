@@ -27,7 +27,8 @@ Here is a [demo](https://androlax2.github.io/material-input/)
 
 ## Bug reports
 
-If you discover a bug in ACF Composer, please [open an issue](https://github.com/Androlax2/material-input/issues) .
+If you discover a bug please
+[open an issue](https://github.com/Androlax2/material-input/issues) .
 
 ## Contributing
 
