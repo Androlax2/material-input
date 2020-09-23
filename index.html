@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 50px;
+        }
+    </style>
+</head>
+<body>
+<form action="#" method="GET">
+    <div class="inputWrapper">
+        <material-input label="Username" name="username" required type="text" value="My username"></material-input>
+    </div>
+    <div class="inputWrapper">
+        <material-input label="Password" name="password" placeholder="Placeholder" type="password"></material-input>
+    </div>
+    <div class="inputWrapper">
+        <material-input label="E-mail" name="email" type="email"></material-input>
+    </div>
+    <div class="inputWrapper">
+        <material-input label="Message" name="message" type="textarea"></material-input>
+    </div>
+    <div class="inputWrapper">
+        <material-input label="First name" name="prenom" type="text"></material-input>
+    </div>
+    <div class="inputWrapper">
+        <material-input label="Age" min="0" name="age" type="number"></material-input>
+    </div>
+</form>
+<script src="MaterialInput.js"></script>
+</body>
+</html>
