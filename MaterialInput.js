@@ -28,7 +28,6 @@ class NotValidTypeError extends Error {
 }
 
 /**
- * TODO : - PREFIX CSS
  * TODO : - Fix textarea jumping on click/focus
  */
 class MaterialInput extends HTMLElement {
@@ -384,8 +383,11 @@ class MaterialInput extends HTMLElement {
                 
                 .materialInput__input {
                 	font-family: var(--materialInput__fontFamily);
-                	appearance: none;
-                	box-sizing: border-box;
+                	-webkit-appearance: none;
+                	   -moz-appearance: none;
+                	        appearance: none;
+                	-webkit-box-sizing: border-box;
+                	        box-sizing: border-box;
                 	resize: none;
                 	outline: none;
 				    position: relative;
@@ -400,12 +402,46 @@ class MaterialInput extends HTMLElement {
 				    border-top: none;
 				    border-right: none;
 				    border-left: none;
-				    border-image: initial;
+				    -o-border-image: initial;
+				       border-image: initial;
 				    border-top: var(--materialInput__borderTopWidth) solid var(--materialInput__borderColor);
 				    border-right: var(--materialInput__borderRightWidth) solid var(--materialInput__borderColor);
 				    border-bottom: var(--materialInput__borderWidth) solid var(--materialInput__borderColor);
 				    border-left: var(--materialInput__borderLeftWidth) solid var(--materialInput__borderColor);
-				    box-shadow: none;
+				    -webkit-box-shadow: none;
+				            box-shadow: none;
+                }
+                
+                .materialInput__input::-webkit-input-placeholder {
+                	font-family: var(--materialInput__fontFamily);
+				    font-size: 1em;
+                	line-height: 1;
+				    color: var(--materialInput__fontColor);
+				    letter-spacing: var(--materialInput__fontLetterSpacing);
+                }
+                
+                .materialInput__input::-moz-placeholder {
+                	font-family: var(--materialInput__fontFamily);
+				    font-size: 1em;
+                	line-height: 1;
+				    color: var(--materialInput__fontColor);
+				    letter-spacing: var(--materialInput__fontLetterSpacing);
+                }
+                
+                .materialInput__input:-ms-input-placeholder {
+                	font-family: var(--materialInput__fontFamily);
+				    font-size: 1em;
+                	line-height: 1;
+				    color: var(--materialInput__fontColor);
+				    letter-spacing: var(--materialInput__fontLetterSpacing);
+                }
+                
+                .materialInput__input::-ms-input-placeholder {
+                	font-family: var(--materialInput__fontFamily);
+				    font-size: 1em;
+                	line-height: 1;
+				    color: var(--materialInput__fontColor);
+				    letter-spacing: var(--materialInput__fontLetterSpacing);
                 }
                 
                 .materialInput__input::placeholder {
@@ -433,14 +469,22 @@ class MaterialInput extends HTMLElement {
 					padding-top: calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop));
 					padding-bottom: var(--materialInput__inputPaddingBottom);
 					text-align: initial;
-					transform-origin: 0 100%;
+					-webkit-transform-origin: 0 100%;
+					    -ms-transform-origin: 0 100%;
+					        transform-origin: 0 100%;
 					will-change: padding-top;
+					-webkit-transition: padding-top .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out, -webkit-transform .2s ease-out;
+					transition: padding-top .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out, -webkit-transform .2s ease-out;
+					-o-transition: padding-top .2s ease-out, transform .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out;
 					transition: padding-top .2s ease-out, transform .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out;
+					transition: padding-top .2s ease-out, transform .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out, -webkit-transform .2s ease-out;
                 }
                 
                 .materialInput__bar {
                 	display: var(--materialInput__barDisplay);
-				    transform: scaleX(0);
+				    -webkit-transform: scaleX(0);
+				        -ms-transform: scaleX(0);
+				            transform: scaleX(0);
 				    background-color: var(--materialInput__borderColorActive);
 				    height: calc(var(--materialInput__borderWidth) + 1px);
 				    left: 0;
@@ -452,21 +496,29 @@ class MaterialInput extends HTMLElement {
                 
                 :host([is-initialized]) .materialInput__bar,
                 :host([is-initialized="true"]) .materialInput__bar {
-                	animation: materialInputBarRemoveUnderline var(--materialInput__borderRemoveTransitionDelay) var(--materialInput__borderRemoveTransition);
+                	-webkit-animation: materialInputBarRemoveUnderline var(--materialInput__borderRemoveTransitionDelay) var(--materialInput__borderRemoveTransition);
+                	        animation: materialInputBarRemoveUnderline var(--materialInput__borderRemoveTransitionDelay) var(--materialInput__borderRemoveTransition);
                 }
                 
                 :host([is-focused]) .materialInput__bar,
                 :host([is-focused="true"]) .materialInput__bar {
-                	animation: materialInputBarAddUnderline var(--materialInput__borderAddTransitionDelay) var(--materialInput__borderAddTransition);
-					transform: scaleX(1);
+                	-webkit-animation: materialInputBarAddUnderline var(--materialInput__borderAddTransitionDelay) var(--materialInput__borderAddTransition);
+                	        animation: materialInputBarAddUnderline var(--materialInput__borderAddTransitionDelay) var(--materialInput__borderAddTransition);
+					-webkit-transform: scaleX(1);
+					    -ms-transform: scaleX(1);
+					        transform: scaleX(1);
                 }
                 
                 :host([is-focused]) label,
                 :host([is-focused="true"]) label {
                 	color: var(--materialInput__labelActiveColor);
                 	padding-top: 0;
-                	transform: scale(0.8);
-				    transform-origin: 0 0;
+                	-webkit-transform: scale(0.8);
+                	    -ms-transform: scale(0.8);
+                	        transform: scale(0.8);
+				    -webkit-transform-origin: 0 0;
+				        -ms-transform-origin: 0 0;
+				            transform-origin: 0 0;
 				    margin-left: var(--materialInput__activeLabelMarginLeft);
 				    margin-right: var(--materialInput__activeLabelMarginRight);
                 }
@@ -474,29 +526,61 @@ class MaterialInput extends HTMLElement {
                 :host([value]) label,
                 :host([placeholder]) label {
                 	padding-top: 0;
-                	transform: scale(0.8);
-				    transform-origin: 0 0;
+                	-webkit-transform: scale(0.8);
+                	    -ms-transform: scale(0.8);
+                	        transform: scale(0.8);
+				    -webkit-transform-origin: 0 0;
+				        -ms-transform-origin: 0 0;
+				            transform-origin: 0 0;
 				    margin-left: var(--materialInput__activeLabelMarginLeft);
 				    margin-right: var(--materialInput__activeLabelMarginRight);
                 }
                 
-                @keyframes materialInputBarRemoveUnderline {
+                @-webkit-keyframes materialInputBarRemoveUnderline {
 				    0% {
-				        transform: scaleX(1);
+				        -webkit-transform: scaleX(1);
+				                transform: scaleX(1);
 				        opacity: 1;
 				    }
 				    to {
-				        transform: scaleX(1);
+				        -webkit-transform: scaleX(1);
+				                transform: scaleX(1);
 				        opacity: 0;
+				    }
+				}
+                
+                @keyframes materialInputBarRemoveUnderline {
+				    0% {
+				        -webkit-transform: scaleX(1);
+				                transform: scaleX(1);
+				        opacity: 1;
+				    }
+				    to {
+				        -webkit-transform: scaleX(1);
+				                transform: scaleX(1);
+				        opacity: 0;
+				    }
+				}
+				
+				@-webkit-keyframes materialInputBarAddUnderline {
+				    0% {
+				        -webkit-transform: scaleX(0);
+				                transform: scaleX(0);
+				    }
+				    to {
+				        -webkit-transform: scaleX(1);
+				                transform: scaleX(1);
 				    }
 				}
 				
 				@keyframes materialInputBarAddUnderline {
 				    0% {
-				        transform: scaleX(0);
+				        -webkit-transform: scaleX(0);
+				                transform: scaleX(0);
 				    }
 				    to {
-				        transform: scaleX(1);
+				        -webkit-transform: scaleX(1);
+				                transform: scaleX(1);
 				    }
 				}
 			</style>
