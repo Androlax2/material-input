@@ -13,7 +13,9 @@ Here is a [demo](https://androlax2.github.io/material-input/)
 
 You can [download the files directly from Github](MaterialInput.js).
 
-`<script src="path/to/MaterialInput.js"></script>`
+```html
+<script src="path/to/MaterialInput.js"></script>
+```
 
 ## Usage
 
@@ -21,7 +23,9 @@ You can [download the files directly from Github](MaterialInput.js).
 
 You have now access to a new **custom element** :
 
-`<material-input></material-input>`
+```html
+<material-input></material-input>
+```
 
 ### Markup
 
@@ -86,15 +90,21 @@ something like this :
 ```html
 <div class="materialInputWrapper">  
     <material-input label="Username" name="username" type="text"></material-input>
+    <!-- Here will be the place of the hidden input -->
 </div>
 ```
+
+If you don't do that, you will have a problem for example if you want to
+uses CSS Grid, or Flex, as in your HTML code there will be only the
+`<material-input></material-input>` element. But there will be an hidden
+input right after it.
 
 ### Validating
 
 You can use all the usual attributes to validate an input (required,
 minlength, maxlength, ...)
 
-#### Styling
+### Styling
 
 You can style Material Input thanks to those variables :
 
@@ -134,7 +144,7 @@ example :
 
 ```css
 material-input {
-    font-size: 2rem; // With this, the material input will be 2x bigger
+    font-size: 2rem; /* With this, the material input will be 2x bigger */
 }
 ```
 
