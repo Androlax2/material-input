@@ -347,9 +347,9 @@ class MaterialInput extends HTMLElement {
                 	--materialInput__borderColorActive: #4285f4;
                 	
                 	/* OTHER BORDERS */
-                	--materialInput__borderTopWidth: 0;
-                	--materialInput__borderRightWidth: 0;
-                	--materialInput__borderLeftWidth: 0;
+                	--materialInput__borderTopWidth: 0px;
+                	--materialInput__borderRightWidth: 0px;
+                	--materialInput__borderLeftWidth: 0px;
                 	
                 	/* BORDER TRANSITION */
                 	--materialInput__borderRemoveTransitionDelay: .3s;
@@ -358,13 +358,13 @@ class MaterialInput extends HTMLElement {
                 	--materialInput__borderAddTransition: cubic-bezier(0.4, 0, 0.2, 1);
                 	
                 	/* PADDING TOP */
-                	--materialInput__paddingTop: 0.6em; /* If you want to remove this, you need to set 0em */
+                	--materialInput__paddingTop: 0.6em; /* If you want to remove this, you need to set to 0em */
                 	
                 	/* INPUT PADDINGS */
-                	--materialInput__inputPaddingTop: 0;
-                	--materialInput__inputPaddingRight: 0;
+                	--materialInput__inputPaddingTop: 0em;
+                	--materialInput__inputPaddingRight: 0em;
                 	--materialInput__inputPaddingBottom: 0.4em;
-                	--materialInput__inputPaddingLeft: 0;
+                	--materialInput__inputPaddingLeft: 0em;
                 	
                 	/* LABEL MARGIN WHEN NOT ACTIVE */
                 	--materialInput__labelMarginLeft: var(--materialInput__inputPaddingLeft);
