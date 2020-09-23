@@ -1,5 +1,5 @@
 /*!
- * MaterialInput
+ * MaterialInput // TODO : ADD THE VERSION HERE
  * (c) 2020 Théo BENOIT mailto:theo.benoit16@gmail.com
  * MIT License
  * https://github.com/Androlax2/material-input
@@ -30,6 +30,7 @@ class NotValidTypeError extends Error {
 /**
  * TODO : - PREFIX CSS
  * TODO : - MAKE THE READ ME
+ * TODO : - Fix textarea jumping on click/focus
  */
 class MaterialInput extends HTMLElement {
 
