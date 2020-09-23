@@ -3,7 +3,9 @@
 Material input is a vanilla javascript plugin that allows you to create
 material inputs easily.
 
-![Material input screen](docs/images/material-inputs.png)
+[![Material input demo](docs/images/material-inputs.png)](https://androlax2.github.io/material-input/)
+
+Here is a [demo](https://androlax2.github.io/material-input/)
 
 ## Installation
 
