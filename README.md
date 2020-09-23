@@ -9,6 +9,12 @@ Here is a [demo](https://androlax2.github.io/material-input/)
 
 ## Installation
 
+#### Direct Download
+
+You can [download the files directly from Github](MaterialInput.js).
+
+`<script src="path/to/MaterialInput.js"></script>`
+
 ## Usage
 
 ### Getting Started
