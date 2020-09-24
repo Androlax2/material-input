@@ -467,6 +467,7 @@ class MaterialInput extends HTMLElement {
                 	color: var(--materialInput__fontColor);
 					pointer-events: none;
 					position: absolute;
+					z-index: 1;
 					font-size: 1em;
 					letter-spacing: var(--materialInput__fontLetterSpacing);
 					top: 0;
