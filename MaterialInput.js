@@ -499,6 +499,7 @@ class MaterialInput extends HTMLElement {
 				    background-color: var(--materialInput__borderColorActive);
 				    height: calc(var(--materialInput__borderWidth) + 1px);
 				    left: 0;
+				    bottom: 0;
 				    margin: calc(var(--materialInput__borderWidth) * -1) 0 0;
 				    padding: 0;
 				    position: absolute;
@@ -524,9 +525,9 @@ class MaterialInput extends HTMLElement {
                 :host([is-focused="true"]) label {
                 	color: var(--materialInput__labelActiveColor);
                 	padding-top: 0;
-                	-webkit-transform: scale(0.8);
-                	    -ms-transform: scale(0.8);
-                	        transform: scale(0.8);
+                	-webkit-transform: translateZ(0) scale(0.8);
+                	    -ms-transform: translateZ(0) scale(0.8);
+                	        transform: translateZ(0) scale(0.8);
 				    -webkit-transform-origin: 0 0;
 				        -ms-transform-origin: 0 0;
 				            transform-origin: 0 0;
