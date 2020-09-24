@@ -137,6 +137,11 @@ material-input {
     /* PADDING TOP */
     --materialInput__paddingTop: 0.6em; /* If you want to remove this, you need to set 0em */
     
+    /* INPUT STYLE */
+    --materialInput__inputBackgroundColor: transparent;
+    --materialInput__inputBorderRadius: 0;
+    --materialInput__inputBoxShadow: none;
+    
     /* INPUT PADDINGS */
     --materialInput__inputPaddingTop: 0em;
     --materialInput__inputPaddingRight: 0em;

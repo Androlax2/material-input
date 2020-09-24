@@ -359,6 +359,11 @@ class MaterialInput extends HTMLElement {
                 	/* PADDING TOP */
                 	--materialInput__paddingTop: 0.6em; /* If you want to remove this, you need to set to 0em */
                 	
+                	/* INPUT STYLE */
+                	--materialInput__inputBackgroundColor: transparent;
+                	--materialInput__inputBorderRadius: 0;
+                	--materialInput__inputBoxShadow: none;
+                	
                 	/* INPUT PADDINGS */
                 	--materialInput__inputPaddingTop: 0em;
                 	--materialInput__inputPaddingRight: 0em;
@@ -391,7 +396,7 @@ class MaterialInput extends HTMLElement {
                 	resize: none;
                 	outline: none;
 				    position: relative;
-				    background-color: transparent;
+				    background-color: var(--materialInput__inputBackgroundColor);
 				    font-size: 1em;
 				    line-height: 1;
 				    letter-spacing: var(--materialInput__fontLetterSpacing);
@@ -408,8 +413,9 @@ class MaterialInput extends HTMLElement {
 				    border-right: var(--materialInput__borderRightWidth) solid var(--materialInput__borderColor);
 				    border-bottom: var(--materialInput__borderWidth) solid var(--materialInput__borderColor);
 				    border-left: var(--materialInput__borderLeftWidth) solid var(--materialInput__borderColor);
-				    -webkit-box-shadow: none;
-				            box-shadow: none;
+				    -webkit-box-shadow: var(--materialInput__inputBoxShadow);
+            			box-shadow: var(--materialInput__inputBoxShadow);
+					border-radius: var(--materialInput__inputBorderRadius);
                 }
                 
                 .materialInput__input::-webkit-input-placeholder {
