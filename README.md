@@ -148,6 +148,9 @@ material-input {
     --materialInput__inputPaddingBottom: 0.4em;
     --materialInput__inputPaddingLeft: 0em;
     
+    /* LABEL ADJUSTMENT */
+    --materialInput__labelTop: 0px;
+    
     /* LABEL MARGIN WHEN NOT ACTIVE */
     --materialInput__labelMarginLeft: var(--materialInput__inputPaddingLeft);
     --materialInput__labelMarginRight: var(--materialInput__inputPaddingRight);

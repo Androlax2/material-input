@@ -370,6 +370,9 @@ class MaterialInput extends HTMLElement {
                 	--materialInput__inputPaddingBottom: 0.4em;
                 	--materialInput__inputPaddingLeft: 0em;
                 	
+                	/* LABEL ADJUSTMENT */
+                	--materialInput__labelTop: 0px;
+                	
                 	/* LABEL MARGIN WHEN NOT ACTIVE */
                 	--materialInput__labelMarginLeft: var(--materialInput__inputPaddingLeft);
                 	--materialInput__labelMarginRight: var(--materialInput__inputPaddingRight);
@@ -470,7 +473,7 @@ class MaterialInput extends HTMLElement {
 					z-index: 1;
 					font-size: 1em;
 					letter-spacing: var(--materialInput__fontLetterSpacing);
-					top: 0;
+					top: var(--materialInput__labelTop);
 					margin-left: var(--materialInput__labelMarginLeft);
 					margin-right: var(--materialInput__labelMarginRight);
 					padding-top: calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop));
