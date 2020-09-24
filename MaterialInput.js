@@ -718,8 +718,10 @@ class MaterialInput extends HTMLElement {
 	 * @private
 	 */
 	_submitForm() {
-		if (!this.$form.checkValidity()) {
-			this.$form.querySelector('[type="submit"]').click();
+		if (!this.$form) return;
+		const $submitButton = this.$form.querySelector('[type="submit"]');
+		if (!this.$form.checkValidity() && $submitButton) {
+			if ($submitButton) $submitButton.click();
 		} else {
 			this.$form.submit();
 		}
