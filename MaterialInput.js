@@ -594,6 +594,29 @@ class MaterialInput extends HTMLElement {
 				                transform: scaleX(1);
 				    }
 				}
+				
+				/* Prevent iOS from zooming in on input fields */
+				@supports (-webkit-touch-callout: none) {
+				  input[type='color'],
+				  input[type='date'],
+				  input[type='datetime'],
+				  input[type='datetime-local'],
+				  input[type='email'],
+				  input[type='month'],
+				  input[type='number'],
+				  input[type='password'],
+				  input[type='search'],
+				  input[type='tel'],
+				  input[type='text'],
+				  input[type='time'],
+				  input[type='url'],
+				  input[type='week'],
+				  select,
+				  select:focus,
+				  textarea {
+					font-size: initial !important;
+				  }
+				}
 			</style>
 		`;
 	}
