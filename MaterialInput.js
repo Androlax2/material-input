@@ -269,6 +269,7 @@ class MaterialInput extends HTMLElement {
 		const style = `
 			pointer-events: none; 
 			margin:0; 
+			padding: 0;
 			border: 0; 
 			height: 0; 
 			opacity: 0; 
