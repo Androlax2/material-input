@@ -423,6 +423,7 @@ class MaterialInput extends HTMLElement {
 				    -webkit-box-shadow: var(--materialInput__inputBoxShadow);
             			box-shadow: var(--materialInput__inputBoxShadow);
 					border-radius: var(--materialInput__inputBorderRadius);
+					word-break: initial;
                 }
                 
                 .materialInput__input::-webkit-input-placeholder {
