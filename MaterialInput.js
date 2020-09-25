@@ -37,8 +37,8 @@ class MaterialInput extends HTMLElement {
 		this._handleAttributesExceptions(this._mandatoryAttributes());
 		this._handleTypesExceptions(this._supportedTypes());
 		this.addEventListener('connected', () => {
-			this._insertHiddenInput();
 			this._cacheDOM();
+			if (this.offsetTop !== 0) this._insertHiddenInput();
 			this._handleEvents();
 			this._transferAttributes();
 		});
