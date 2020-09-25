@@ -476,19 +476,15 @@ class MaterialInput extends HTMLElement {
 					letter-spacing: var(--materialInput__fontLetterSpacing);
 					top: var(--materialInput__labelTop);
 					margin-left: var(--materialInput__labelMarginLeft);
-					margin-right: var(--materialInput__labelMarginRight);
-					padding-top: calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop));
-					padding-bottom: var(--materialInput__inputPaddingBottom);
+					-webkit-transform: translateY(calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)));
+					    -ms-transform: translateY(calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)));
+					        transform: translateY(calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)));
 					text-align: initial;
 					-webkit-transform-origin: 0 100%;
 					    -ms-transform-origin: 0 100%;
 					        transform-origin: 0 100%;
-					will-change: padding-top;
-					-webkit-transition: padding-top .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out, -webkit-transform .2s ease-out;
-					transition: padding-top .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out, -webkit-transform .2s ease-out;
-					-o-transition: padding-top .2s ease-out, transform .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out;
-					transition: padding-top .2s ease-out, transform .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out;
-					transition: padding-top .2s ease-out, transform .2s ease-out, color .2s ease-out, margin-left .2s ease-out, margin-right .2s ease-out, -webkit-transform .2s ease-out;
+					will-change: transform, color;
+					transition: transform .2s ease-out, color .2s ease-out, -webkit-transform .2s ease-out;
                 }
                 
                 .materialInput__bar {
@@ -525,27 +521,21 @@ class MaterialInput extends HTMLElement {
                 :host([is-focused="true"]) label {
                 	color: var(--materialInput__labelActiveColor);
                 	padding-top: 0;
-                	-webkit-transform: translateZ(0) scale(0.8);
-                	    -ms-transform: translateZ(0) scale(0.8);
-                	        transform: translateZ(0) scale(0.8);
+                	-webkit-transform: translate3d(0, 0, 0) scale(0.8);
+                	        transform: translate3d(0, 0, 0) scale(0.8);
 				    -webkit-transform-origin: 0 0;
 				        -ms-transform-origin: 0 0;
 				            transform-origin: 0 0;
-				    margin-left: var(--materialInput__activeLabelMarginLeft);
-				    margin-right: var(--materialInput__activeLabelMarginRight);
                 }
                 
                 :host([value]) label,
                 :host([placeholder]) label {
                 	padding-top: 0;
-                	-webkit-transform: scale(0.8);
-                	    -ms-transform: scale(0.8);
-                	        transform: scale(0.8);
+                	-webkit-transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
+                	        transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
 				    -webkit-transform-origin: 0 0;
 				        -ms-transform-origin: 0 0;
 				            transform-origin: 0 0;
-				    margin-left: var(--materialInput__activeLabelMarginLeft);
-				    margin-right: var(--materialInput__activeLabelMarginRight);
                 }
                 
                 @-webkit-keyframes materialInputBarRemoveUnderline {
@@ -640,15 +630,18 @@ class MaterialInput extends HTMLElement {
 	 */
 	_handleEvents() {
 		// Container events
-		this.addEventListener('focusin', () => {
-			this.isInitialized = true;
-			this.isFocused = true;
-		});
 		this.addEventListener('focusout', () => this.isFocused = false);
 		window.addEventListener('click', () => {
 			this.isFocused = false;
 		});
-		this.addEventListener('click', e => {
+
+		// Input events
+		this.$input.addEventListener('focusin', () => {
+			this.isInitialized = true;
+			this.isFocused = true;
+		});
+
+		this.$input.addEventListener('click', e => {
 			e.stopPropagation();
 			const {left} = e.target.getBoundingClientRect();
 			this.$bar.style.transformOrigin = `${e.clientX - left}px center`;
@@ -656,7 +649,6 @@ class MaterialInput extends HTMLElement {
 			this.isFocused = true;
 		});
 
-		// Input events
 		this.$input.addEventListener('input', () => this.value = this.$input.value);
 
 		// Submit form when user press Enter key in the input others than textarea
