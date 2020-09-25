@@ -29,6 +29,9 @@ class NotValidTypeError extends Error {
 
 /**
  * TODO : - Fix textarea jumping on click/focus
+ * TODO : - Possibilité de mettre directement dans <material-input> un attribut pour ne pas mettre la barre d'animation
+ * TODO : - Possibilité de mettre directement dans <material-input> un attribut permettant de mettre toutes les bordures, et non seulement celle du bas =>
+ *     Si c'est le cas, adapté l'animation, (se référer à la connexion gmail)
  */
 class MaterialInput extends HTMLElement {
 
