@@ -475,10 +475,8 @@ class MaterialInput extends HTMLElement {
 					font-size: 1em;
 					letter-spacing: var(--materialInput__fontLetterSpacing);
 					top: var(--materialInput__labelTop);
-					margin-left: var(--materialInput__labelMarginLeft);
-					-webkit-transform: translateY(calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)));
-					    -ms-transform: translateY(calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)));
-					        transform: translateY(calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)));
+					-webkit-transform: translate3d(var(--materialInput__inputPaddingLeft), calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)), 0);
+        				transform: translate3d(var(--materialInput__inputPaddingLeft), calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)), 0);
 					text-align: initial;
 					-webkit-transform-origin: 0 100%;
 					    -ms-transform-origin: 0 100%;
@@ -520,9 +518,8 @@ class MaterialInput extends HTMLElement {
                 :host([is-focused]) label,
                 :host([is-focused="true"]) label {
                 	color: var(--materialInput__labelActiveColor);
-                	padding-top: 0;
-                	-webkit-transform: translate3d(0, 0, 0) scale(0.8);
-                	        transform: translate3d(0, 0, 0) scale(0.8);
+                	-webkit-transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
+                	        transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
 				    -webkit-transform-origin: 0 0;
 				        -ms-transform-origin: 0 0;
 				            transform-origin: 0 0;
@@ -530,7 +527,6 @@ class MaterialInput extends HTMLElement {
                 
                 :host([value]) label,
                 :host([placeholder]) label {
-                	padding-top: 0;
                 	-webkit-transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
                 	        transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
 				    -webkit-transform-origin: 0 0;
