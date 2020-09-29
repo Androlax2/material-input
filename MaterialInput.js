@@ -29,9 +29,6 @@ class NotValidTypeError extends Error {
 
 /**
  * TODO : - Fix textarea jumping on click/focus
- * TODO : - Possibilité de mettre directement dans <material-input> un attribut pour ne pas mettre la barre d'animation
- * TODO : - Possibilité de mettre directement dans <material-input> un attribut permettant de mettre toutes les bordures, et non seulement celle du bas =>
- *     Si c'est le cas, adapté l'animation, (se référer à la connexion gmail)
  */
 class MaterialInput extends HTMLElement {
 
@@ -40,8 +37,10 @@ class MaterialInput extends HTMLElement {
 		this._handleAttributesExceptions(this._mandatoryAttributes());
 		this._handleTypesExceptions(this._supportedTypes());
 		this.addEventListener('connected', () => {
+			this._insertHiddenInput();
+		});
+		this.addEventListener('hiddenInputConnected', () => {
 			this._cacheDOM();
-			if (this.offsetTop !== 0) this._insertHiddenInput();
 			this._handleEvents();
 			this._transferAttributes();
 		});
@@ -301,6 +300,8 @@ class MaterialInput extends HTMLElement {
 		//@formatter:on
 
 		this.insertAdjacentElement('afterend', $input);
+
+		this.dispatchEvent(new Event('hiddenInputConnected'));
 	}
 
 	/**
@@ -659,6 +660,13 @@ class MaterialInput extends HTMLElement {
 			this.$input.addEventListener('focus', (this._onFocusTextarea).bind(this));
 			//@formatter:on
 		}
+	}
+
+	/**
+	 * Get input height
+	 */
+	getInputHeight() {
+		return this.$input.getBoundingClientRect().height;
 	}
 
 	/**
