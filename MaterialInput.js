@@ -786,6 +786,7 @@ class MaterialInput extends HTMLElement {
 	 * - Cache DOM elements
 	 */
 	connectedCallback() {
+		if (this.shadowRoot) return;
 		this.attachShadow({mode: 'open'});
 		this.shadowRoot.appendChild(this._getTemplate().content.cloneNode(true));
 
