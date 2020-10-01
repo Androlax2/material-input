@@ -193,11 +193,11 @@ Material input emit 1 custom event :
 in the object detail**.
 
 ```javascript
-    const $input = document.querySelector('material-input');
+const $input = document.querySelector('material-input');
 
-    $input.addEventListener('valueChanged', e => {
-    	const value = e.detail.value; // What user typed (value of the input)
-    });
+$input.addEventListener('valueChanged', e => {
+	const value = e.detail.value; // What user typed (value of the input)
+});
 ```
 
 ## Browser Compatibility
