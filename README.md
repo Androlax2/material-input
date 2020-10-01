@@ -185,6 +185,21 @@ For now, Material Input only supports those types of input :
 - `password`
 - `number`
 
+## Events
+
+Material input emit 1 custom event :
+
+`valueChanged` when the user typed in the input, it will **return a value
+in the object detail**.
+
+```javascript
+    const $input = document.querySelector('material-input');
+
+    $input.addEventListener('valueChanged', e => {
+    	const value = e.detail.value; // What user typed (value of the input)
+    });
+```
+
 ## Browser Compatibility
 
 Material Input uses custom element, here is a link to can i use to see

@@ -122,6 +122,11 @@ class MaterialInput extends HTMLElement {
 			if (this.$input) this.$input.removeAttribute('value');
 			this.removeAttribute('value');
 		}
+		this.dispatchEvent(new CustomEvent('valueChanged', {
+			detail: {
+				value: value
+			}
+		}));
 	}
 
 	/**
