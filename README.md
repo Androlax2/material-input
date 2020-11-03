@@ -110,57 +110,68 @@ You can style Material Input thanks to those variables :
 
 ```css
 material-input {
-    /* LABEL AND INPUT */
+    /* INPUT */
     --materialInput__fontFamily: Arial, Helvetica, sans-serif;
     --materialInput__fontColor: #9e9e9e;
     --materialInput__fontLetterSpacing: 0;
-    
+    --materialInput__fontWeight: 400;
+
+    /* LABEL */
+    --materialInput__labelFontFamily: var(--materialInput__fontFamily);
+    --materialInput__labelFontColor: var(--materialInput__fontColor);
+    --materialInput__labelFontLetterSpacing: var(--materialInput__fontLetterSpacing);
+    --materialInput__labelFontWeight: var(--materialInput__fontWeight);
+
     /* ACTIVE LABEL */
     --materialInput__labelActiveColor: #4285f4;
-    
+    --materialInput__activeLabelYPos: 0;
+
     /* BORDER */
     --materialInput__borderWidth: 1px;
     --materialInput__borderColor: #9e9e9e;
     --materialInput__borderColorActive: #4285f4;
-    
+
     /* OTHER BORDERS */
-    --materialInput__borderTopWidth: 0em;
-    --materialInput__borderRightWidth: 0em;
-    --materialInput__borderLeftWidth: 0em;
-    
+    --materialInput__borderTopWidth: 0px;
+    --materialInput__borderRightWidth: 0px;
+    --materialInput__borderLeftWidth: 0px;
+
     /* BORDER TRANSITION */
     --materialInput__borderRemoveTransitionDelay: .3s;
     --materialInput__borderRemoveTransition: cubic-bezier(0.4, 0, 0.2, 1);
     --materialInput__borderAddTransitionDelay: .3s;
     --materialInput__borderAddTransition: cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* PADDING TOP */
-    --materialInput__paddingTop: 0.6em; /* If you want to remove this, you need to set 0em */
-    
+    --materialInput__paddingTop: 0.6em; /* If you want to remove this, you need to set to 0em */
+
     /* INPUT STYLE */
     --materialInput__inputBackgroundColor: transparent;
     --materialInput__inputBorderRadius: 0;
     --materialInput__inputBoxShadow: none;
-    
+
+    /* INPUT STYLE ACTIVE */
+    --materialInput__activeInputBackgroundColor: var(--materialInput__inputBackgroundColor);
+
     /* INPUT PADDINGS */
     --materialInput__inputPaddingTop: 0em;
     --materialInput__inputPaddingRight: 0em;
     --materialInput__inputPaddingBottom: 0.4em;
     --materialInput__inputPaddingLeft: 0em;
-    
+
     /* LABEL ADJUSTMENT */
     --materialInput__labelTop: 0px;
-    
+
     /* LABEL MARGIN WHEN NOT ACTIVE */
     --materialInput__labelMarginLeft: var(--materialInput__inputPaddingLeft);
     --materialInput__labelMarginRight: var(--materialInput__inputPaddingRight);
-    
+
     /* LABEL MARGIN WHEN ACTIVE */
     --materialInput__activeLabelMarginLeft: var(--materialInput__labelMarginLeft);
     --materialInput__activeLabelMarginRight: var(--materialInput__labelMarginRight);
-    
-    /* BAR DISPLAY */
-    --materialInput__barDisplay: block;
+
+   	/* BAR DISPLAY */
+   	--materialInput__barDisplay: block;
 }
 ```
 

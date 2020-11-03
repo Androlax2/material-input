@@ -342,13 +342,21 @@ class MaterialInput extends HTMLElement {
                 }
                 
                 :host {
-                	/* LABEL AND INPUT */
+                	/* INPUT */
                 	--materialInput__fontFamily: Arial, Helvetica, sans-serif;
                 	--materialInput__fontColor: #9e9e9e;
                 	--materialInput__fontLetterSpacing: 0;
+                	--materialInput__fontWeight: 400;
+                	
+                	/* LABEL */
+                	--materialInput__labelFontFamily: var(--materialInput__fontFamily);
+                	--materialInput__labelFontColor: var(--materialInput__fontColor);
+                	--materialInput__labelFontLetterSpacing: var(--materialInput__fontLetterSpacing);
+                	--materialInput__labelFontWeight: var(--materialInput__fontWeight);
                 	
                 	/* ACTIVE LABEL */
                 	--materialInput__labelActiveColor: #4285f4;
+                	--materialInput__activeLabelYPos: 0;
                 	
                 	/* BORDER */
                 	--materialInput__borderWidth: 1px;
@@ -374,6 +382,9 @@ class MaterialInput extends HTMLElement {
                 	--materialInput__inputBorderRadius: 0;
                 	--materialInput__inputBoxShadow: none;
                 	
+                	/* INPUT STYLE ACTIVE */
+                	--materialInput__activeInputBackgroundColor: var(--materialInput__inputBackgroundColor);
+                	
                 	/* INPUT PADDINGS */
                 	--materialInput__inputPaddingTop: 0em;
                 	--materialInput__inputPaddingRight: 0em;
@@ -395,8 +406,8 @@ class MaterialInput extends HTMLElement {
                		--materialInput__barDisplay: block;
                 }
                 
-                .materialInput {
-                	padding-top: calc(0.9em + var(--materialInput__paddingTop)); /* 0.9em is the minimum for padding top (to have the label upper user input) */
+				.materialInput {
+                	padding-top: calc(var(--materialInput__paddingTopUpper, 0.9em) + var(--materialInput__paddingTop)); /* 0.9em is the minimum for padding top (to have the label upper user input) */
                 }
                 
                 .materialInput__input {
@@ -411,6 +422,7 @@ class MaterialInput extends HTMLElement {
 				    position: relative;
 				    background-color: var(--materialInput__inputBackgroundColor);
 				    font-size: 1em;
+				    font-weight: var(--materialInput__fontWeight);
 				    line-height: 1;
 				    letter-spacing: var(--materialInput__fontLetterSpacing);
 				    color: var(--materialInput__fontColor);
@@ -430,10 +442,14 @@ class MaterialInput extends HTMLElement {
             			box-shadow: var(--materialInput__inputBoxShadow);
 					border-radius: var(--materialInput__inputBorderRadius);
 					word-break: initial;
+					-webkit-transition: border-color .3s ease, background-color .3s ease;
+					-o-transition: border-color .3s ease, background-color .3s ease;
+					transition: border-color .3s ease, background-color .3s ease;
                 }
                 
                 .materialInput__input::-webkit-input-placeholder {
                 	font-family: var(--materialInput__fontFamily);
+                	font-weight: var(--materialInput__fontWeight);
 				    font-size: 1em;
                 	line-height: 1;
 				    color: var(--materialInput__fontColor);
@@ -442,6 +458,7 @@ class MaterialInput extends HTMLElement {
                 
                 .materialInput__input::-moz-placeholder {
                 	font-family: var(--materialInput__fontFamily);
+                	font-weight: var(--materialInput__fontWeight);
 				    font-size: 1em;
                 	line-height: 1;
 				    color: var(--materialInput__fontColor);
@@ -450,6 +467,7 @@ class MaterialInput extends HTMLElement {
                 
                 .materialInput__input:-ms-input-placeholder {
                 	font-family: var(--materialInput__fontFamily);
+                	font-weight: var(--materialInput__fontWeight);
 				    font-size: 1em;
                 	line-height: 1;
 				    color: var(--materialInput__fontColor);
@@ -458,6 +476,7 @@ class MaterialInput extends HTMLElement {
                 
                 .materialInput__input::-ms-input-placeholder {
                 	font-family: var(--materialInput__fontFamily);
+                	font-weight: var(--materialInput__fontWeight);
 				    font-size: 1em;
                 	line-height: 1;
 				    color: var(--materialInput__fontColor);
@@ -466,6 +485,7 @@ class MaterialInput extends HTMLElement {
                 
                 .materialInput__input::placeholder {
                 	font-family: var(--materialInput__fontFamily);
+                	font-weight: var(--materialInput__fontWeight);
 				    font-size: 1em;
                 	line-height: 1;
 				    color: var(--materialInput__fontColor);
@@ -477,16 +497,17 @@ class MaterialInput extends HTMLElement {
                 }
       
                 label {
-                	font-family: var(--materialInput__fontFamily);
-                	color: var(--materialInput__fontColor);
+                	font-family: var(--materialInput__labelFontFamily);
+                	color: var(--materialInput__labelFontColor);
 					pointer-events: none;
 					position: absolute;
 					z-index: 1;
 					font-size: 1em;
-					letter-spacing: var(--materialInput__fontLetterSpacing);
+					font-weight: var(--materialInput__labelFontWeight);
+					letter-spacing: var(--materialInput__labelFontLetterSpacing);
 					top: var(--materialInput__labelTop);
-					-webkit-transform: translate3d(var(--materialInput__inputPaddingLeft), calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)), 0);
-        				transform: translate3d(var(--materialInput__inputPaddingLeft), calc(0.9em + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)), 0);
+					-webkit-transform: translate3d(var(--materialInput__inputPaddingLeft), calc(var(--materialInput__paddingTopUpper, 0.9em) + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)), 0);
+        				transform: translate3d(var(--materialInput__inputPaddingLeft), calc(var(--materialInput__paddingTopUpper, 0.9em) + var(--materialInput__paddingTop) + var(--materialInput__inputPaddingTop)), 0);
 					text-align: initial;
 					-webkit-transform-origin: 0 100%;
 					    -ms-transform-origin: 0 100%;
@@ -528,8 +549,8 @@ class MaterialInput extends HTMLElement {
                 :host([is-focused]) label,
                 :host([is-focused="true"]) label {
                 	color: var(--materialInput__labelActiveColor);
-                	-webkit-transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
-                	        transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
+                	-webkit-transform: translate3d(var(--materialInput__activeLabelMarginLeft), var(--materialInput__activeLabelYPos), 0) scale(0.8);
+                	        transform: translate3d(var(--materialInput__activeLabelMarginLeft), var(--materialInput__activeLabelYPos), 0) scale(0.8);
 				    -webkit-transform-origin: 0 0;
 				        -ms-transform-origin: 0 0;
 				            transform-origin: 0 0;
@@ -537,11 +558,23 @@ class MaterialInput extends HTMLElement {
                 
                 :host([value]) label,
                 :host([placeholder]) label {
-                	-webkit-transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
-                	        transform: translate3d(var(--materialInput__activeLabelMarginLeft), 0, 0) scale(0.8);
+                	-webkit-transform: translate3d(var(--materialInput__activeLabelMarginLeft), var(--materialInput__activeLabelYPos), 0) scale(0.8);
+                	        transform: translate3d(var(--materialInput__activeLabelMarginLeft), var(--materialInput__activeLabelYPos), 0) scale(0.8);
 				    -webkit-transform-origin: 0 0;
 				        -ms-transform-origin: 0 0;
 				            transform-origin: 0 0;
+                }
+                
+                :host([value]) input,
+                :host([placeholder]) input,
+                :host([is-focused]) input,
+                :host([is-focused="true"]) input,
+                :host([value]) textarea,
+                :host([placeholder]) textarea,
+                :host([is-focused]) textarea,
+                :host([is-focused="true"]) textarea {
+                	background-color: var(--materialInput__activeInputBackgroundColor);
+                	border-color: var(--materialInput__borderColorActive);
                 }
                 
                 @-webkit-keyframes materialInputBarRemoveUnderline {
