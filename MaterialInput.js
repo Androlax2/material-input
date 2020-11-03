@@ -420,6 +420,7 @@ class MaterialInput extends HTMLElement {
                 	resize: none;
                 	outline: none;
 				    position: relative;
+				    min-height: var(--materialInput__inputMinHeight, auto);
 				    background-color: var(--materialInput__inputBackgroundColor);
 				    font-size: 1em;
 				    font-weight: var(--materialInput__fontWeight);
