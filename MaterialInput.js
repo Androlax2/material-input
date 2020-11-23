@@ -575,7 +575,6 @@ class MaterialInput extends HTMLElement {
                 :host([is-focused]) textarea,
                 :host([is-focused="true"]) textarea {
                 	background-color: var(--materialInput__activeInputBackgroundColor);
-                	border-color: var(--materialInput__borderColorActive);
                 }
                 
                 @-webkit-keyframes materialInputBarRemoveUnderline {
