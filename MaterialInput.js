@@ -278,7 +278,6 @@ class MaterialInput extends HTMLElement {
 			margin:0; 
 			padding: 0;
 			border: 0; 
-			height: 0; 
 			opacity: 0; 
 			position: absolute;
 			top: ${this.offsetTop + this.offsetHeight}px;
