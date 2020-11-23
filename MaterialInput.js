@@ -37,6 +37,8 @@ class MaterialInput extends HTMLElement {
 		this._handleAttributesExceptions(this._mandatoryAttributes());
 		this._handleTypesExceptions(this._supportedTypes());
 		this.addEventListener('connected', () => {
+			this._cacheDOM();
+			this.$form.style.position = 'relative';
 			this._insertHiddenInput();
 		});
 		this.addEventListener('hiddenInputConnected', () => {
@@ -273,6 +275,10 @@ class MaterialInput extends HTMLElement {
 	 * @private
 	 */
 	_insertHiddenInput() {
+		const elementRect = this.$input.getBoundingClientRect();
+		const targetRect = this.$form.getBoundingClientRect();
+
+		//@formatter:off
 		const style = `
 			pointer-events: none; 
 			margin:0; 
@@ -280,9 +286,10 @@ class MaterialInput extends HTMLElement {
 			border: 0; 
 			opacity: 0; 
 			position: absolute;
-			top: ${this.offsetTop + this.offsetHeight}px;
-			left: ${this.offsetLeft}px
+			top: ${elementRect.top - targetRect.top - elementRect.height}px;
+			left: ${elementRect.left - targetRect.left}px
 		`;
+		//@formatter:on
 		const attributes = {
 			'aria-hidden': true,
 			'tabindex': -1,
