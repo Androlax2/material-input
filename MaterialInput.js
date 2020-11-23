@@ -284,9 +284,10 @@ class MaterialInput extends HTMLElement {
 			margin:0; 
 			padding: 0;
 			border: 0; 
+			height: ${elementRect.height}px;
 			opacity: 0; 
 			position: absolute;
-			top: ${elementRect.top - targetRect.top - elementRect.height}px;
+			top: ${elementRect.top - targetRect.top}px;
 			left: ${elementRect.left - targetRect.left}px
 		`;
 		//@formatter:on
